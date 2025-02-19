@@ -10,14 +10,14 @@ const app = express();
 app.use(cors()); 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/stock')
+mongoose.connect('mongodb://127.0.0.1:27017/stock')
 .then(() => console.log('Connected to MongoDB Atlas'))
 .catch(err => console.error('MongoDB Atlas connection error:', err));
 
 // Routes
 app.use('/api/products', routes); 
 
-const PORT = 300;
+const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

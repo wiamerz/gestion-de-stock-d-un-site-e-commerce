@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./components/Header";
 import Footer from "./components/Footer";  
+import AdminPage from "./components/AdminPage"; 
 
 
 const App = () => {
@@ -8,12 +8,7 @@ const App = () => {
   return (
     <div className={`min-h-screen font-sans overflow-x-hidden`}>
             <>
-            <input type='file' />
-            <Button onClick={onUploadImage}>
-            image
-            </Button>
-              <Header />
-               
+               <AdminPage />
               <Footer />
             </>
 

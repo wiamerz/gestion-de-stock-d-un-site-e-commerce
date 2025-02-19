@@ -5,7 +5,7 @@ const Footer = () => {
     <footer
       className={`text-center p-6 mt-10 `}
     >
-      <p className={`text-white`}>
+      <p className={`text-black `}>
         © 2025 All rights reserved
       </p>
     </footer>
