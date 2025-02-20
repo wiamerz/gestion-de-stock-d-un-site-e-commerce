@@ -11,18 +11,18 @@ const produitSchema = new mongoose.Schema({
     required: [true, 'description est requis'],
     trim: true,
   },
-  prix: {
-    type: String,
+  price: {  
+    type: Number,  
     required: [true, 'Le prix est requis'],
-    trim: true,
   },
   stock: {
-    type: String,
+    type: Number,  
     required: [true, 'Le stock est requis'],
-    trim: true,
+  },
+  image: {
+    type: String, 
+    required: false
   }
-}, {
-  timestamps: true 
 });
 
 module.exports = mongoose.model('Produit', produitSchema);

@@ -1,6 +1,6 @@
-import React from "react";
-import Footer from "./components/Footer";  
+import React from "react"; 
 import AdminPage from "./components/AdminPage"; 
+
 
 
 const App = () => {
@@ -9,7 +9,6 @@ const App = () => {
     <div className={`min-h-screen font-sans overflow-x-hidden`}>
             <>
                <AdminPage />
-              <Footer />
             </>
 
     </div>

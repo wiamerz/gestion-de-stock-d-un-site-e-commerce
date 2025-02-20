@@ -23,6 +23,17 @@ router.get('/', async (req, res) => {
   }
 });
 
+// modifier un produit
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedProduct) return res.status(404).json({ success: false, message: "Produit non trouvé" });
+    res.json({ success: true, data: updatedProduct });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Erreur serveur" });
+  }
+}); 
+
 // Supprimer un produit
 router.delete('/:id', async (req, res) => {
   try {
