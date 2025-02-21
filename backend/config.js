@@ -17,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/stock')
 // Routes
 app.use('/api/products', routes); 
 
-const PORT = 8000;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
