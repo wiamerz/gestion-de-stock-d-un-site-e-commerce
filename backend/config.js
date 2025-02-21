@@ -9,7 +9,8 @@ const app = express();
 // Middleware
 app.use(cors()); 
 app.use(bodyParser.json());
-
+app.use("/uploads", express.static("uploads")
+)
 mongoose.connect('mongodb://127.0.0.1:27017/stock')
 .then(() => console.log('Connected to MongoDB Atlas'))
 .catch(err => console.error('MongoDB Atlas connection error:', err));

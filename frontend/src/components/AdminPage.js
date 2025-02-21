@@ -44,17 +44,14 @@ function AdminProducts() {
 
     const formDataToSend = new FormData();
     Object.keys(formData).forEach(key => {
-      formDataToSend.append(key, formData[key]);
+      if (formData[key]) {
+        formDataToSend.append(key, formData[key]);
+      }
     });
 
 
-///////////////////////////////
-     for (let pair of formDataToSend.entries()) {
-       console.log(pair[0], pair[1]);
-      }
-//////////////////////////
     axios.post("http://localhost:5000/api/products", formDataToSend, {
-      ///////////////////////////////////////////////////////
+      
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -91,15 +88,22 @@ const handleEditClick = (product) => {
     price: product.price,
     stock: product.stock,
     description: product.description,
-    image: product.image || null
+    image:  null
+    //product.image ||
   });
 };
 const handleUpdate = (e) => {
   e.preventDefault();
 
+  // const formDataToSend = new FormData();
+  // Object.keys(formData).forEach(key => {
+  //   formDataToSend.append(key, formData[key]);
+  // });
   const formDataToSend = new FormData();
   Object.keys(formData).forEach(key => {
-    formDataToSend.append(key, formData[key]);
+    if (formData[key] !== null) {
+      formDataToSend.append(key, formData[key]);
+    }
   });
 
   axios.put(`http://localhost:5000/api/products/${editingProduct._id}`, formDataToSend, {
@@ -220,6 +224,7 @@ const handleUpdate = (e) => {
                 <th className="p-4 text-left font-medium text-gray-700">Titre</th>
                 <th className="p-4 text-left font-medium text-gray-700">Prix</th>
                 <th className="p-4 text-left font-medium text-gray-700">Stock</th>
+                <th className="p-4 text-left font-medium text-gray-700">description</th>
                 <th className="p-4 text-left font-medium text-gray-700">Modifier</th>
                 <th className="p-4 text-left font-medium text-gray-700">Actions</th>
               </tr>
@@ -228,7 +233,7 @@ const handleUpdate = (e) => {
               {products.length > 0 ? (
                 products.map((produit) => (
                   <tr key={produit._id} className='text-black'>
-                    <td className="px-6 py-4">
+                  <td className="px-6 py-4">
                       {produit.image ? (
                         <img 
                           src={`http://localhost:5000/${produit.image}`} 
@@ -242,8 +247,9 @@ const handleUpdate = (e) => {
                     <td className='px-6 py-4'>{produit.title}</td>
                     <td className='px-6 py-4'>{produit.price} €</td>
                     <td className='px-6 py-4'>{produit.stock}</td>
+                    <td className='px-6 py-4'>{produit.description}</td>
                     <td className='px-6 py-4'> 
-                      <button onClick={() => handleEditClick(produit)} className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
+                      <button onClick={() => handleEditClick(produit)} className="bg-blue-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
                        Modifier
                        </button>
                     </td>
@@ -261,7 +267,7 @@ const handleUpdate = (e) => {
         </div>
 
 
-
+{/*for the editing card*/ }
 
         {editingProduct && (
   <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
